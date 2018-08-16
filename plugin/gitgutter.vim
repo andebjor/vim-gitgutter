@@ -1,5 +1,11 @@
 scriptencoding utf-8
 
+" It doesn't work with gvim unless it it started from a cygwin terminal due to
+" git.exe not being in the PATH otherwise
+if has("gui_running") && !executable('git')
+  finish
+endif
+
 if exists('g:loaded_gitgutter') || !has('signs') || &cp
   finish
 endif
